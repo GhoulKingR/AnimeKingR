@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
@@ -6,6 +8,7 @@ from tqdm import tqdm
 import time
 import math
 import requests
+import os
 
 jsonres = None
 choice = None
@@ -72,8 +75,12 @@ def which_quality():
 
 
 if __name__ == "__main__":
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    driver_file = "geckodriver"
+    driver_path = os.path.join(script_dir, driver_file)
+
     # Prepare driver
-    service = Service(executable_path="./geckodriver")
+    service = Service(executable_path=driver_path)
     options = Options()
     options.add_argument('--headless')
     driver = webdriver.Firefox(service=service, options=options)
