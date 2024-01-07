@@ -1,2 +1,5 @@
 .DS_Store
 tests/
+bin/
+lib/
+pyvenv.cfg
