@@ -163,3 +163,4 @@ if __name__ == "__main__":
             file.write(data)
 
     progress_bar.close()
+    driver.quit()
