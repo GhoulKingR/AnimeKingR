@@ -8,16 +8,16 @@ For now this project only runs on Mac because the of the geckodriver version. If
 
 ## Runnning the bot
 
-Everything you need for running this app is already in this repo. You just need to follow these steps:
+To run this bot, follow these steps:
 
 1. Clone the repository into your system
 ```bash
 git clone https://github.com/GhoulKingR/anime-bot.git
 ```
 
-2. Activate the virtual environment
+2. Install it's dependencies:
 ```bash
-source bin/activate
+pip install -r requirements.txt
 ```
 
 3. Run the bot
