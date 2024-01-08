@@ -4,7 +4,7 @@ A simple anime bot for downloading your favorite animes.
 
 ## Requirements
 
-For now this project only runs on Mac because the of the geckodriver version. If you're using any other operating system and want it to work, please let me know by opening an issue.
+All you need to use this bot on your system is a Python 3 interpreter, and Pip installed in it. 
 
 ## Runnning the bot
 
