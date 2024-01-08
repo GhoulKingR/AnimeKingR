@@ -4,7 +4,10 @@ A simple anime bot for downloading your favorite animes.
 
 ## Requirements
 
-All you need to use this bot on your system is a Python 3 interpreter, and Pip installed in it. 
+To run this bot on your system, you need the following:
+* Python v3 interpreter
+* Pip
+* Chrome browser
 
 ## Runnning the bot
 
