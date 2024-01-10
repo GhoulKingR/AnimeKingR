@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 3. Run the bot
 ```bash
-python src/bot
+python src/anime-bot
 ```
 
 ![Screenshot](/assets/screenshot.png)
