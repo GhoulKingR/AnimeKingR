@@ -53,12 +53,12 @@ def which_quality():
         }
         qualities.append(quality)
 
-    text = "Qualities found:\n"
+    text = "\nHere are qualities found:\n"
     text += "\n".join([
         f"{i+1}. {qualities[i]['name']}"
         for i in range(len(qualities))
     ]) + "\n\n"
-    text += "Your answer: "
+    text += "Which one do you want to download: "
     ans = int(input(text)) - 1
 
     if 0 <= ans and ans < len(qualities):
