@@ -8,7 +8,6 @@ from tqdm import tqdm
 import time
 import math
 import requests
-import os
 import argparse
 
 jsonres = None
@@ -81,10 +80,6 @@ if __name__ == "__main__":
     if version:
         print(f"v{__version__}")
     else:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        driver_file = "geckodriver"
-        driver_path = os.path.join(script_dir, driver_file)
-
         # Prepare driver
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
