@@ -1,4 +1,4 @@
-__version__ = '1.0.0'
+__version__ = open("version.txt", 'r').read()
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
