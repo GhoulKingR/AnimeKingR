@@ -1,11 +1,8 @@
 from setuptools import setup
 
-version = open("version.txt", 'r').read()
-
-
 setup(
     name="Anime bot",
-    version=version,
+    version='0.0.1',
     author='GhoulKingR',
     author_email='oduahchigozie46@gmail.com',
     description='An anime bot to download your favourite animes',
