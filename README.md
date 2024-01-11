@@ -18,19 +18,18 @@ To run this bot, follow these steps:
 git clone https://github.com/GhoulKingR/anime-bot.git
 ```
 
-2. Enter into the project directory:
+2. Install the package to your computer:
 ```bash
-cd anime-bot
-```
-
-3. Install it's dependencies:
-```bash
-pip install -r requirements.txt
+python3 setup.py install
 ```
 
 4. Run the bot
 ```bash
-python src/anime-bot
+anime-bot
+
+# or
+
+python3 -m anime-bot
 ```
 
 ![Screenshot](/assets/screenshot.png)
