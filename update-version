@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+if ! test -f version.txt; then
+    echo "version.txt does not exist. Creating..."
+    touch version.txt
+    echo "0.0.0" > version.txt
+fi
+
+update_version () {
+    echo "$1" > version.txt
+    echo "$1"
+}
+
+main () {
+    # Get version from version file
+    version=$(cat version.txt)
+
+    # Split into different sections
+    IFS='.' read -a array <<< "$version"
+
+
+    case $1 in
+        "minor")
+            update_version "${array[0]}.$(( array[1] + 1)).${array[2]}"
+        ;;
+        "major")
+            update_version "$(( array[0] + 1)).${array[1]}.${array[2]}"
+        ;;
+        "patch")
+            update_version "${array[0]}.${array[1]}.$(( array[2] + 1))"
+        ;;
+        *)
+            echo "invalid Option"
+        ;;
+    esac
+}
+
+if [[ ! $@ ]]; then
+    echo "This command updates the version number for this project"
+    echo "Your options are: minor, major, and patch"
+    echo "Version format should be:"
+    echo "          major.minor.patch"
+    echo "          e.g. 0.0.0 or 1.0.2"
+else
+    main $@
+fi
