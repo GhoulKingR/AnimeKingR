@@ -3,3 +3,5 @@ tests/
 bin/
 lib/
 pyvenv.cfg
+Pipfile
+Pipfile.lock
