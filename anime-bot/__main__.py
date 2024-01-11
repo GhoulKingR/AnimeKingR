@@ -30,7 +30,7 @@ def get_choice():
 def ask_episode():
     total_episodes = anime_details['total']
     
-    ans = int(input(f"There are {total_episodes} episodes, which do you want to downlad? "))
+    ans = int(input(f"There are {total_episodes} episodes, which do you want to download? "))
     if 0 < ans and ans <= total_episodes:
         return ans
     else:
