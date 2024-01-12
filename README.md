@@ -24,7 +24,7 @@ $ akr-download
 Search:
 ```
 
-![screenshot](./assets/screenshot.png)
+![screenshot](./anime_king_r/assets/screenshot.png)
 
 ## Bugs/Request
 
