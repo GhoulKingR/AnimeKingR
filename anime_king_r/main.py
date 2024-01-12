@@ -1,4 +1,4 @@
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -67,7 +67,12 @@ def which_quality():
         return which_quality()
 
 
-if __name__ == "__main__":
+def main():
+    global jsonres
+    global choice
+    global driver
+    global anime_details
+
     try:
         parser = argparse.ArgumentParser(description="A simple anime bot for downloading your favorite animes.")
         parser.add_argument("-v", "--version", action="store_true", help="Display the software version of this anime bot")
@@ -180,3 +185,6 @@ if __name__ == "__main__":
             print("Download complete!")
     except KeyboardInterrupt:
         print("\nExiting program...")
+
+if __name__ == "__main__":
+    main()
