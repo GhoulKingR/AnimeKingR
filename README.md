@@ -13,7 +13,7 @@ To run this bot on your system, you need the following:
 
 To install the bot to your system run this command:
 ```
-pip install anime_king_r
+pip install anime-king-r
 ```
 
 ## Runnning the bot
