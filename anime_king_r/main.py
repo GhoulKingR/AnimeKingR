@@ -1,4 +1,4 @@
-__version__ = '0.1.4-beta.4'
+__version__ = '0.1.4'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
