@@ -1,4 +1,4 @@
-# Anime bot
+# Anime King R
 
 A simple anime bot for downloading your favorite animes.
 
