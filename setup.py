@@ -7,11 +7,11 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="anime_king_r",
-    version='0.1.1',
+    version='0.1.2',
     author='GhoulKingR',
     author_email='oduahchigozie46@gmail.com',
     description='An anime bot to download your favourite animes',
-    url='https://github.com/GhoulKingR/anime-bot',
+    url='https://github.com/GhoulKingR/AnimeKingR',
     # scripts=['./scripts/anime-bot'],
     packages=find_packages(),
     license='MIT',
