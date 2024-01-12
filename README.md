@@ -24,7 +24,7 @@ $ akr-download
 Search:
 ```
 
-<img src="https://github.com/GhoulKingR/AnimeKingR/blob/85868311ef2113fb1da316c2dcf055ee1add474a/assets/screenshot.png" />
+![screenshot](./assets/screenshot.png)
 
 ## Bugs/Request
 
