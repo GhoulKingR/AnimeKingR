@@ -9,27 +9,19 @@ To run this bot on your system, you need the following:
 * Pip
 * Chrome browser
 
+## Installing the bot
+
+To install the bot to your system run this command:
+```
+pip install anime_king_r
+```
+
 ## Runnning the bot
 
-To run this bot, follow these steps:
-
-1. Clone the repository into your system
-```bash
-git clone https://github.com/GhoulKingR/anime-bot.git
+After installing the bot, you can now download animes using this command:
 ```
-
-2. Install the package to your computer:
-```bash
-python3 setup.py install
-```
-
-4. Run the bot
-```bash
-anime-bot
-
-# or
-
-python3 -m anime-bot
+$ akr-download
+Search:
 ```
 
 ![Screenshot](/assets/screenshot.png)
