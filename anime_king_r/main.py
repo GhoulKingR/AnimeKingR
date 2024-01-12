@@ -38,9 +38,9 @@ def ask_episode():
 
 def get_episode_link(episode):
     page = math.ceil(episode/30)
-    response = requests.get(f"https://animepahe.ru/api?m=release&id={jsonres['data'][0]['session']}&sort=episode_asc&page={page}").json()
+    response = requests.get(f"https://animepahe.ru/api?m=release&id={jsonres['data'][choice-1]['session']}&sort=episode_asc&page={page}").json()
     position = (episode - (page - 1) * 30) - 1
-    return f"https://animepahe.ru/play/{jsonres['data'][0]['session']}/{response['data'][position]['session']}"
+    return f"https://animepahe.ru/play/{jsonres['data'][choice-1]['session']}/{response['data'][position]['session']}"
 
 def which_quality():
     time.sleep(1)
