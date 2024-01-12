@@ -13,7 +13,7 @@ To run this bot on your system, you need the following:
 
 To install the bot to your system run this command:
 ```
-pip install anime_king_r
+pip install anime-king-r
 ```
 
 ## Runnning the bot
@@ -24,7 +24,7 @@ $ akr-download
 Search:
 ```
 
-![Screenshot](/assets/screenshot.png)
+![Screenshot](https://github.com/GhoulKingR/AnimeKingR/blob/85868311ef2113fb1da316c2dcf055ee1add474a/assets/screenshot.png)
 
 ## Bugs/Request
 
