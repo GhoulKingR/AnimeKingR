@@ -77,6 +77,7 @@ def main():
         parser = argparse.ArgumentParser(description="A simple anime bot for downloading your favorite animes.")
         parser.add_argument("-v", "--version", action="store_true", help="Display the software version of this anime bot")
         parser.add_argument("-d", "--debug", action="store_true", help="Display browser activity, and enable terminal logging")
+        parser.add_argument("anime_name", nargs='?', help="Search for the anime you want to download")
 
         args = parser.parse_args()
 
@@ -86,16 +87,7 @@ def main():
         if version:
             print(f"v{__version__}")
         else:
-            # Prepare driver
-            options = webdriver.ChromeOptions()
-            options.add_argument("start-maximized")
-            
-            if not debug:
-                options.add_argument("--headless")
-
-            options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            options.add_experimental_option('useAutomationExtension', False)
-            driver = webdriver.Chrome(options=options)
+            print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
 
             # Search for anime
             while True:
@@ -114,6 +106,17 @@ def main():
 
                 if choice != None and choice > 0:
                     break
+
+            # Prepare driver
+            options = webdriver.ChromeOptions()
+            options.add_argument("start-maximized")
+            
+            if not debug:
+                options.add_argument("--headless")
+
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_experimental_option('useAutomationExtension', False)
+            driver = webdriver.Chrome(options=options)
             
             # Set anime details
             response = requests.get(
