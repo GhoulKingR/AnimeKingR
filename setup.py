@@ -22,7 +22,8 @@ setup(
         "requests == 2.31.0",
         "selenium == 4.16.0",
         "tqdm == 4.66.1",
-        "setuptools",
+        "setuptools == 68.1.2",
+        "colorama==0.4.6",
     ],
     entry_points={
         "console_scripts": [
