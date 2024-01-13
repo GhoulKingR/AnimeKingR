@@ -48,11 +48,11 @@ def which_quality():
 
     for a in driver.find_elements(By.CSS_SELECTOR, "#pickDownload .dropdown-item"):
         quality_text = a.get_attribute("innerText").split(" ")
-        sub_dub = 'Dubbed' if quality_text[-1] == 'eng' else 'Subbed'
+        sub_dub = 'dub' if quality_text[-1] == 'eng' else 'sub'
         quality = quality_text[2]
         size = quality_text[3][1:-1]
         quality = {
-            "name": f"{quality}\t\t{size}\t\t{sub_dub}",
+            "name": f"{quality}{' ' * (15 - len(quality))}{size}{' ' * (15 - len(size))}{sub_dub}",
             "link": a.get_attribute("href")
         }
         qualities.append(quality)
