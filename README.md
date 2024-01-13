@@ -31,4 +31,4 @@ If you encounter any problems or you want to request a new feature feel free to 
 
 ## Found this project useful?
 
-If you found this project useful or you like what you see, then please consider giving it a ⭐ on Github and sharing it with your friends on social media.
+If you found this project useful or you like what you see, then please consider giving it a ⭐ on [Github](https://github.com/GhoulKingR/AnimeKingR) and sharing it with your friends on social media.
