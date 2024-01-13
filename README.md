@@ -20,8 +20,7 @@ pip install anime-king-r
 
 After installing the bot, you can now download animes using this command:
 ```
-$ akr-download
-Search:
+$ akr-download "jujutsu kaisen"
 ```
 
 ![screenshot](https://github.com/GhoulKingR/AnimeKingR/raw/ba956cf16d4be530263d4dca53d2596da15765db/assets/screenshot.png)
