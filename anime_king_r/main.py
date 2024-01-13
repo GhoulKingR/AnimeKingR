@@ -86,106 +86,107 @@ def main():
 
         if version:
             print(f"v{__version__}")
-        else:
-            print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
+            return
+        
+        print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
 
-            # Search for anime
-            while True:
-                search = input("Search: ")
-                response = requests.get(f"https://animepahe.ru/api?m=search&q={search}")
-                if response.status_code == 200:
-                    # Print the response content (usually in JSON format for APIs)
-                    jsonres = response.json()
-                    # print(jsonres)
-                else:
-                    # Print an error message if the request was not successful
-                    print(f"Error: {response.status_code} - {response.text}")
-                
-                list_anime()
-                choice = get_choice()
-
-                if choice != None and choice > 0:
-                    break
-
-            # Prepare driver
-            options = webdriver.ChromeOptions()
-            options.add_argument("start-maximized")
+        # Search for anime
+        while True:
+            search = input("Search: ")
+            response = requests.get(f"https://animepahe.ru/api?m=search&q={search}")
+            if response.status_code == 200:
+                # Print the response content (usually in JSON format for APIs)
+                jsonres = response.json()
+                # print(jsonres)
+            else:
+                # Print an error message if the request was not successful
+                print(f"Error: {response.status_code} - {response.text}")
             
-            if not debug:
-                options.add_argument("--headless")
+            list_anime()
+            choice = get_choice()
 
-            options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            options.add_experimental_option('useAutomationExtension', False)
-            driver = webdriver.Chrome(options=options)
-            
-            # Set anime details
-            response = requests.get(
-                f"https://animepahe.ru/api?m=release&id={jsonres['data'][choice-1]['session']}&sort=episode_desc&page=1"
-            )
-            anime_details = response.json()
-            
-            # Get episode link
-            episode = ask_episode()
-            episode_link = get_episode_link(episode)
-            driver.get(episode_link)
+            if choice != None and choice > 0:
+                break
 
-            # Get quality lists
-            quality_link = which_quality()
-            driver.get(quality_link)
+        # Prepare driver
+        options = webdriver.ChromeOptions()
+        options.add_argument("start-maximized")
+        
+        if not debug:
+            options.add_argument("--headless")
 
-            # Get link from continue button
-            print("Downloading...")
-            print("Please wait for it to begin...")
-            for i in range(1, 6):
-                try:
-                    a = driver.find_element(By.XPATH, "//a[text()='Continue']")
-                    link_to_download = a.get_attribute("href")
-                    driver.get(link_to_download)
-                    break
-                except:
-                    # print(f"{i}/{5} retries, waiting 3s")
-                    time.sleep(3)
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+        driver = webdriver.Chrome(options=options)
+        
+        # Set anime details
+        response = requests.get(
+            f"https://animepahe.ru/api?m=release&id={jsonres['data'][choice-1]['session']}&sort=episode_desc&page=1"
+        )
+        anime_details = response.json()
+        
+        # Get episode link
+        episode = ask_episode()
+        episode_link = get_episode_link(episode)
+        driver.get(episode_link)
 
-            # find download link and token
-            link = driver.find_element(By.CSS_SELECTOR, ".main .download form").get_attribute("action")
-            token = driver.find_element(By.CSS_SELECTOR, ".main .download form input").get_attribute("value")
-            
-            # Preper header and payload
-            cookies = '; '.join([
-                f"{cookie['name']}={cookie['value']}"
-                for cookie in driver.get_cookies()
-            ])
-            data = {
-                "_token": token
-            }
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
-                'Referer': 'https://kwik.cx/f/r6gCLSqIe9Nh',
-                'Origin': 'https://kwik.cx',
-                'Host': 'kwik.cx',
-                'Cookie': cookies
-            }
+        # Get quality lists
+        quality_link = which_quality()
+        driver.get(quality_link)
 
-            # Download anime
-            response = requests.post(link, data=data, headers=headers, stream=True)
-            file_name = response.headers.get('Content-Disposition').split('=')[1]
-            print(file_name)
+        # Get link from continue button
+        print("Downloading...")
+        print("Please wait for it to begin...")
+        for i in range(1, 6):
+            try:
+                a = driver.find_element(By.XPATH, "//a[text()='Continue']")
+                link_to_download = a.get_attribute("href")
+                driver.get(link_to_download)
+                break
+            except:
+                # print(f"{i}/{5} retries, waiting 3s")
+                time.sleep(3)
 
-            response.raise_for_status()
+        # find download link and token
+        link = driver.find_element(By.CSS_SELECTOR, ".main .download form").get_attribute("action")
+        token = driver.find_element(By.CSS_SELECTOR, ".main .download form input").get_attribute("value")
+        
+        # Preper header and payload
+        cookies = '; '.join([
+            f"{cookie['name']}={cookie['value']}"
+            for cookie in driver.get_cookies()
+        ])
+        data = {
+            "_token": token
+        }
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0',
+            'Referer': 'https://kwik.cx/f/r6gCLSqIe9Nh',
+            'Origin': 'https://kwik.cx',
+            'Host': 'kwik.cx',
+            'Cookie': cookies
+        }
 
-            total_size = int(response.headers.get('content-length', 0))
-            block_size = 1024  # 1 Kibibyte
+        # Download anime
+        response = requests.post(link, data=data, headers=headers, stream=True)
+        file_name = response.headers.get('Content-Disposition').split('=')[1]
+        print(file_name)
 
-            progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True)
+        response.raise_for_status()
 
-            with open(file_name, 'wb') as file:
-                for data in response.iter_content(block_size):
-                    progress_bar.update(len(data))
-                    file.write(data)
+        total_size = int(response.headers.get('content-length', 0))
+        block_size = 1024  # 1 Kibibyte
 
-            progress_bar.close()
-            driver.quit()
-            print("Download complete!")
+        progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True)
+
+        with open(file_name, 'wb') as file:
+            for data in response.iter_content(block_size):
+                progress_bar.update(len(data))
+                file.write(data)
+
+        progress_bar.close()
+        driver.quit()
+        print("Download complete!")
     except KeyboardInterrupt:
         print("\nExiting program...")
 
