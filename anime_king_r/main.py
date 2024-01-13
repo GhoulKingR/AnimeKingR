@@ -3,10 +3,13 @@ __version__ = '0.1.4'
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from tqdm import tqdm
+from colorama import Back, Fore, Style, init
 import time
 import math
 import requests
 import argparse
+
+init()
 
 jsonres = None
 choice = None
@@ -99,7 +102,9 @@ def main():
                 # Print an error message if the request was not successful
                 print(f"Error: {response.status_code} - {response.text}")
         else:
-            print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
+            warning = f"{Style.BRIGHT}{Back.YELLOW} Warning: {Style.RESET_ALL}"
+            deprecated = f"{Style.BRIGHT}{Fore.RED}deprecated{Style.RESET_ALL}"
+            print(f"{warning} Searching for animes this way is {deprecated}, and will be removed in the next major version (1.0.0)")
 
             # Search for anime
             search = input("Search: ")
