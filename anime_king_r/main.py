@@ -83,15 +83,25 @@ def main():
 
         version = args.version
         debug = args.debug
+        anime_name = args.anime_name
 
         if version:
             print(f"v{__version__}")
             return
         
-        print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
+        if anime_name:
+            response = requests.get(f"https://animepahe.ru/api?m=search&q={anime_name}")
+            if response.status_code == 200:
+                # Print the response content (usually in JSON format for APIs)
+                jsonres = response.json()
+                # print(jsonres)
+            else:
+                # Print an error message if the request was not successful
+                print(f"Error: {response.status_code} - {response.text}")
+        else:
+            print("Searching for anime this way is deprecated, and will be removed in the next major version (1.0.0)")
 
-        # Search for anime
-        while True:
+            # Search for anime
             search = input("Search: ")
             response = requests.get(f"https://animepahe.ru/api?m=search&q={search}")
             if response.status_code == 200:
@@ -101,8 +111,9 @@ def main():
             else:
                 # Print an error message if the request was not successful
                 print(f"Error: {response.status_code} - {response.text}")
-            
-            list_anime()
+                
+        list_anime()
+        while True:
             choice = get_choice()
 
             if choice != None and choice > 0:
