@@ -6,4 +6,5 @@ Pipfile.lock
 *.egg-info
 build/
 dist/
-notebooks/.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+*/__pycache__

@@ -1,4 +1,4 @@
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -81,7 +81,10 @@ def main():
     global anime_details
 
     try:
-        parser = argparse.ArgumentParser(description="A simple anime bot for downloading your favorite animes.")
+        parser = argparse.ArgumentParser(
+            description="A simple anime bot for downloading your favorite animes.",
+            prog="akr-download"
+        )
         parser.add_argument("-v", "--version", action="store_true", help="Display the software version of this anime bot")
         parser.add_argument("-d", "--debug", action="store_true", help="Display browser activity, and enable terminal logging")
         parser.add_argument("anime_name", nargs='?', help="Search for the anime you want to download")

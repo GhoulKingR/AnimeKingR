@@ -7,16 +7,13 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="anime_king_r",
-    version='0.2.2',
+    version='0.2.3',
     author='GhoulKingR',
     author_email='oduahchigozie46@gmail.com',
     description='An anime bot to download your favourite animes',
     url='https://github.com/GhoulKingR/AnimeKingR',
-    # scripts=['./scripts/anime-bot'],
+    scripts=['./scripts/akr-download'],
     packages=find_packages(),
-    package_data={
-        '': ['assets/*']
-    },
     license='MIT',
     install_requires=[
         "requests == 2.31.0",
@@ -25,11 +22,6 @@ setup(
         "setuptools == 68.1.2",
         "colorama==0.4.6",
     ],
-    entry_points={
-        "console_scripts": [
-            "akr-download = anime_king_r:main"
-        ]
-    },
     long_description=long_description,
     long_description_content_type='text/markdown'
 )
