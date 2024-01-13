@@ -1,4 +1,4 @@
-__version__ = '0.1.5'
+__version__ = '0.2.0'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -47,8 +47,12 @@ def which_quality():
     qualities = []
 
     for a in driver.find_elements(By.CSS_SELECTOR, "#pickDownload .dropdown-item"):
+        quality_text = a.get_attribute("innerText").split(" ")
+        sub_dub = 'dub' if quality_text[-1] == 'eng' else 'sub'
+        quality = quality_text[2]
+        size = quality_text[3][1:-1]
         quality = {
-            "name": a.get_attribute("innerHTML").split(" ")[2],
+            "name": f"{quality}{' ' * (15 - len(quality))}{size}{' ' * (15 - len(size))}{sub_dub}",
             "link": a.get_attribute("href")
         }
         qualities.append(quality)
