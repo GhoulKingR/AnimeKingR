@@ -23,7 +23,7 @@ After installing the bot, you can now download animes using this command:
 $ akr-download "jujutsu kaisen"
 ```
 
-![screenshot](https://github.com/GhoulKingR/AnimeKingR/raw/ba956cf16d4be530263d4dca53d2596da15765db/assets/screenshot.png)
+![screenshot](https://github.com/GhoulKingR/AnimeKingR/raw/d4e75888b31945b562357e7ce09a4dba915a9b80/assets/screenshot.png)
 
 ## Bugs/Request
 
