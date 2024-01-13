@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="anime_king_r",
-    version='0.2.0',
+    version='0.2.1',
     author='GhoulKingR',
     author_email='oduahchigozie46@gmail.com',
     description='An anime bot to download your favourite animes',

@@ -1,4 +1,4 @@
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -108,7 +108,10 @@ def main():
         else:
             warning = f"{Style.BRIGHT}{Back.YELLOW} Warning: {Style.RESET_ALL}"
             deprecated = f"{Style.BRIGHT}{Fore.RED}deprecated{Style.RESET_ALL}"
-            print(f"{warning} Searching for animes this way is {deprecated}, and will be removed in the next major version (1.0.0)")
+            print(
+                f"{warning} Searching for animes this way is {deprecated}, and will be removed in the next major version (1.0.0).\n"
+                "To find out more see: https://github.com/GhoulKingR/AnimeKingR/releases/tag/v0.2.0"
+            )
 
             # Search for anime
             search = input("Search: ")
