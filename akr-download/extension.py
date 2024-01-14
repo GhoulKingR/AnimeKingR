@@ -1,0 +1,1 @@
+from akr_ext_animepahe import Extension
