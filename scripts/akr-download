@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python3 -m akr_download $@
+python3 -m akr_download "$@"
