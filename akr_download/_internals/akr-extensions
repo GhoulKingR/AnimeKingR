@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+script_dir="$(dirname "$0")"
+
+if [[ ! $1 ]]; then
+    echo "You need to pass a command"
+    echo ""
+    echo "      Command can either be: add | list"
+    echo ""
+else
+    case "$1" in
+        "add")
+            if [[ ! $2 ]]; then
+                echo "You need to pass a pypi package extension"
+            else
+                pip install $2
+                python3 "${script_dir}/add_to_json.py" $2
+            fi
+            ;;
+        "list")
+            python3 "${script_dir}/list_extensions.py"
+            ;;
+        "remove")
+            if [[ ! $2 ]]; then
+                echo "You need to pass a the name of an"
+            else
+                pip uninstall $2 <<< "y"
+                python3 "${script_dir}/remove_from_json.py" $2
+            fi
+            ;;
+        "default")
+            if [[ ! $2 ]]; then
+                echo "You need to pass a the name of an extension"
+            else
+                if pip show "$2" &> /dev/null; then
+                    echo "from $2 import Extension" > "${script_dir}/extension.py"
+                else
+                    echo "Extension is not installed"
+                fi
+            fi
+            ;;
+        *)
+            echo "$1 is an unknown command"
+            ;;
+
+    esac
+
+fi
