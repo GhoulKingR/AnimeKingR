@@ -1,7 +1,7 @@
 __version__ = '0.2.3'
 
 import argparse
-from ._internals.extension import Extension
+from akr_extensions import Extension
 
 def main():
     try:
