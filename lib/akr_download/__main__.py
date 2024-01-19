@@ -25,14 +25,7 @@ def main():
             print(f"v{__version__}")
             return
                 
-        if anime_name != None:
-            animepahe.search(anime_name)
-            animepahe.list_anime()
-            animepahe.get_anime_choice()
-            animepahe.get_anime_details()
-            animepahe.get_episode()
-            animepahe.download_episode()
-            animepahe.quit()
+        if anime_name != None: animepahe.run(anime_name)
         else: parser.print_help()
     except KeyboardInterrupt:
         print("\nExiting program...")
